@@ -5,12 +5,14 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 
 import Navigation from './navigation/Navigation'
+import RestaurantAll from './restaurants/RestaurantsAll'
 import Footer from './footer/Footer';
 
 function App() {
   return (
     <div className="App">
       <Navigation />
+      <RestaurantAll />
       <Footer />
     </div>
   );
