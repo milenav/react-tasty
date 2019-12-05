@@ -3,7 +3,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNav
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
 
-class NavbarPage extends Component {
+class Navigation extends Component {
 state = {
   isOpen: false
 };
@@ -15,7 +15,7 @@ toggleCollapse = () => {
 render() {
   return (
     <Router>
-      <MDBNavbar color="default-color" dark expand="md">
+      <MDBNavbar color="amber darken-3" dark expand="md">
         <MDBNavbarBrand>
           <strong className="white-text">Navbar</strong>
         </MDBNavbarBrand>
@@ -41,4 +41,4 @@ render() {
   }
 }
 
-export default NavbarPage;
+export default Navigation;
