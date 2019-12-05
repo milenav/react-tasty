@@ -7,7 +7,7 @@ import "mdbreact/dist/css/mdb.css";
 import Navigation from './navigation/Navigation'
 import RestaurantAll from './restaurants/RestaurantsAll'
 import Footer from './footer/Footer';
-import Home from './restaurants/home/Home';
+import Home from './home/Home';
 
 function App() {
   return (
