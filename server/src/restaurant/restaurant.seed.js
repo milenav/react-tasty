@@ -1,4 +1,4 @@
-import Restaurant from './restaurat.model';
+import Restaurant from './restaurant.model';
 import { dbTypes } from '../db';
 
 export const seedRestaurants = () => {
