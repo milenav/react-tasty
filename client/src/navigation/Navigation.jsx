@@ -16,7 +16,7 @@ render() {
   return (
           <MDBNavbar color="peach-gradient" dark expand="md">
               <MDBNavbarBrand>
-              <img src="https://i1.wp.com/www.equallyours.org.uk/wp-content/uploads/2012/04/edf-logo.png?fit=50%2C50&ssl=1" className="img-responsive" alt={`Responsive`}/>
+              <img src="http://ftp.tuxpaint.org/stamps/stamps-thumbs/stamps/food/fruit/cartoon/lemon_slice.png" className="img-responsive w-25" alt={`Responsive`}/>
               </MDBNavbarBrand>
               <MDBNavbarToggler onClick={this.toggleCollapse} />
               <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
