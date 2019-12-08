@@ -10,6 +10,8 @@ import Footer from './footer/Footer';
 import Home from './home/Home';
 import AllRestaurants from './restaurants/allRestaurants/AllRestaurants';
 import CreateRestaurant from './restaurants/createRestaurant/CreateRestaurant';
+import Register from './user/register/Register';
+import Login from './user/register/login/Login';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/restaurants" component={AllRestaurants} />
           <Route path="/create" component={CreateRestaurant} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
           <Route path="*" render={() => '404' }/>
         </Switch>
         <Footer />
