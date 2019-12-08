@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "author": "Dimitar <mailto.dimitrov@gmail.com>",
+  "author": "Milena <milena.v.valcheva@gmail.com>",
   "scripts": {
     "prestart": "yarn",
     "dev": "nodemon",

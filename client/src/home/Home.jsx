@@ -23,9 +23,9 @@ function Home() {
 
             <MDBRow className="no-gutters" center>
               <MDBCol size="auto">
-                {/* <MDBNavLink to="/restaurants" style={{ padding: 0 }}>
-                  <MDBBtn color="default">Виж повече</MDBBtn>
-                </MDBNavLink> */}
+                 <MDBNavLink to="/restaurants" style={{ padding: 0 }}>
+                  <MDBBtn className="white-text" color="default">Виж повече</MDBBtn>
+                </MDBNavLink> 
               </MDBCol>
             </MDBRow>
           </MDBCol>
