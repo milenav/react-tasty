@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
-import { BrowserRouter as Router } from 'react-router-dom';
 
 import '../navigation/Navigation.css'
 
@@ -15,10 +14,9 @@ toggleCollapse = () => {
 
 render() {
   return (
-      <Router>
-          <MDBNavbar color="blue" dark expand="md">
+          <MDBNavbar color="peach-gradient" dark expand="md">
               <MDBNavbarBrand>
-                  <strong className="white-text">Tasty</strong>
+              <img src="https://i1.wp.com/www.equallyours.org.uk/wp-content/uploads/2012/04/edf-logo.png?fit=50%2C50&ssl=1" className="img-responsive" alt={`Responsive`}/>
               </MDBNavbarBrand>
               <MDBNavbarToggler onClick={this.toggleCollapse} />
               <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -39,11 +37,14 @@ render() {
                           <MDBNavLink to="/restaurants">Restaurants</MDBNavLink>
                       </MDBNavItem>
                       <MDBNavItem>
+                          <MDBNavLink to="/create">New Restaurants</MDBNavLink>
+                      </MDBNavItem>
+                      <MDBNavItem>
                       </MDBNavItem>
                   </MDBNavbarNav>
               </MDBCollapse>
           </MDBNavbar>
-      </Router>
+
     );
   }
 }
