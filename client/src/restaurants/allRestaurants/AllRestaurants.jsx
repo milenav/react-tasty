@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 
-class AllRestaurants extends Component {
-    render() {
-        return(
-            <div>Restaurant All</div>
-        )
-    }
+const AllRestaurants = () => {
+    return (
+        <div>da</div>
+    )
 }
 
 export default AllRestaurants;

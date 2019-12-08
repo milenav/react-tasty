@@ -5,8 +5,9 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Navigation from './navigation/Navigation'
+import Navigation from './navigation/Navigation';
 import Footer from './footer/Footer';
+import NotFound from './notFound/NotFound';
 import Home from './home/Home';
 import AllRestaurants from './restaurants/allRestaurants/AllRestaurants';
 import CreateRestaurant from './restaurants/createRestaurant/CreateRestaurant';
@@ -25,7 +26,7 @@ function App() {
           <Route path="/create" component={CreateRestaurant} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="*" render={() => '404' }/>
+          <Route path="*" component={NotFound} />
         </Switch>
         <Footer />
       </BrowserRouter>
