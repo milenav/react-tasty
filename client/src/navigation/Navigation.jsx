@@ -14,9 +14,9 @@ toggleCollapse = () => {
 
 render() {
   return (
-          <MDBNavbar color="peach-gradient" dark expand="md">
+          <MDBNavbar color="warning-color-dark" dark expand="md">
               <MDBNavbarBrand>
-              <img src="http://ftp.tuxpaint.org/stamps/stamps-thumbs/stamps/food/fruit/cartoon/lemon_slice.png" className="img-responsive w-25" alt={`Responsive`}/>
+              <img src="https://assets.website-files.com/5d548291782f475092a9ed52/5d6ede434c483e311ac82c57_wordmark_256x256.png" className="img-fluid" alt={`Responsive`} style={{ maxWidth: "20%" }}/>
               </MDBNavbarBrand>
               <MDBNavbarToggler onClick={this.toggleCollapse} />
               <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
