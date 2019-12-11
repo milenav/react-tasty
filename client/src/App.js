@@ -12,7 +12,7 @@ import Home from './home/Home';
 import AllRestaurants from './restaurants/allRestaurants/AllRestaurants';
 import CreateRestaurant from './restaurants/createRestaurant/CreateRestaurant';
 import Register from './user/register/Register';
-import Login from './user/register/login/Login';
+import Login from './user/login/Login';
 
 function App() {
   return (
