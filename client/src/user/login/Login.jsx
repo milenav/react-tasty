@@ -7,7 +7,7 @@ const Login = () => {
       <MDBRow>
         <MDBCol md="6">
           <form>
-            <p className="h4 text-center mb-4">Login</p>
+            <p className="h4 text-center my-4">Login</p>
             <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
               Your email
             </label>
@@ -16,8 +16,8 @@ const Login = () => {
               id="defaultFormLoginEmailEx"
               className="form-control"
             />
-            <br />
-            <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
+            
+            <label htmlFor="defaultFormLoginPasswordEx" className="grey-text mt-4">
               Your password
             </label>
             <input

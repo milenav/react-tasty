@@ -7,7 +7,7 @@ const CreateRestaurant = () => {
       <MDBRow>
         <MDBCol md="6">
           <form>
-            <p className="h4 text-center mb-4">Create New Restaurant</p>
+            <p className="h4 text-center my-4">Create New Restaurant</p>
             <label htmlFor="RestaurantName" className="grey-text">
               Restaurant Name
             </label>
@@ -16,8 +16,8 @@ const CreateRestaurant = () => {
               id="RestaurantName"
               className="form-control"
             />
-            <br />
-            <label htmlFor="Kitchens" className="grey-text">
+            
+            <label htmlFor="Kitchens" className="grey-text mt-4">
               Kitchens
             </label>
             <input
@@ -25,8 +25,8 @@ const CreateRestaurant = () => {
               id="Kitchens"
               className="form-control"
             />
-            <br />
-            <label htmlFor="LogoUrl" className="grey-text">
+           
+            <label htmlFor="LogoUrl" className="grey-text mt-4">
               Restaurant Logo
             </label>
             <input
@@ -34,9 +34,9 @@ const CreateRestaurant = () => {
               id="LogoUrl"
               className="form-control"
             />
-            <br />
+            
             <div className="text-center mt-4">
-              <MDBBtn className="white-text" color="default" type="submit">Login</MDBBtn>
+              <MDBBtn className="white-text" color="default" type="submit">Create</MDBBtn>
             </div>
           </form>
         </MDBCol>
