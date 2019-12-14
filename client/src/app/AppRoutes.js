@@ -31,18 +31,17 @@ const PrivateRoute = ({
   };
 
 const AppRoutes = () => {
-    const appContext = useContext(AppContext);
-    console.log(appContext.isLoggedIn);
+    const { isLoggedIn } = useContext(AppContext);
 
     return (
         <Switch>
             <Route path="/" exact component={Home} />
-            <PrivateRoute allowed={appContext.isLoggedIn} path="/restaurant" component={AllRestaurants} />
-            <PrivateRoute allowed={appContext.isLoggedIn} path="/create" component={CreateRestaurant} />
-            <PrivateRoute allowed={appContext.isLoggedIn} path="/restaurants/:name" component={RestaurantDetails} />
+            <PrivateRoute allowed={isLoggedIn} path="/restaurant" component={AllRestaurants} />
+            <PrivateRoute allowed={isLoggedIn} path="/create" component={CreateRestaurant} />
+            <PrivateRoute allowed={isLoggedIn} path="/restaurants/:name" component={RestaurantDetails} />
             
-            <PrivateRoute allowed={!appContext.isLoggedIn} path="/register" component={Register} />
-            <PrivateRoute allowed={!appContext.isLoggedIn} path="/login" component={Login} />
+            <PrivateRoute allowed={!isLoggedIn} path="/register" component={Register} />
+            <PrivateRoute allowed={!isLoggedIn} path="/login" component={Login} />
 
             <Route path="*" component={NotFound} />
         </Switch>
