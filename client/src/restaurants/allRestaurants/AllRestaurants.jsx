@@ -111,7 +111,7 @@ const AllRestaurants = () => {
                   <MDBCol className="mb-3" key={restaurant.name} size="3">
                     <MDBCard className="h-100">
                       <MDBCardBody className=" d-flex justify-content-center flex-wrap">
-                        <MDBNavLink to={`/restaurant/${restaurant.name}`}>
+                        <MDBNavLink to={`/restaurants/${restaurant.name}`}>
                           <MDBCardImage src={restaurant.logoUrl} alt="Logo" />
                         </MDBNavLink>
                       </MDBCardBody>

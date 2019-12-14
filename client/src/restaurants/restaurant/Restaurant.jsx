@@ -1,5 +1,5 @@
 import React from "react";
-import {  MDBRow, MDBCol, MDBCard,  MDBCardBody, MDBIcon, MDBBtn } from "mdbreact";
+import {  MDBRow, MDBCol, MDBCard,  MDBCardBody, MDBBtn } from "mdbreact";
 
 const Restaurant = ({name, logo, kitchens, categgories}) => {
   return (

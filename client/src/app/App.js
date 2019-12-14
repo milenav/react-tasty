@@ -13,6 +13,7 @@ import AllRestaurants from '../restaurants/allRestaurants/AllRestaurants';
 import CreateRestaurant from '../restaurants/createRestaurant/CreateRestaurant';
 import Register from '../user/register/Register';
 import Login from '../user/login/Login';
+import RestaurantDetails from '../restaurants/detailsRestaurant/DetailsRestaurant';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/create" component={CreateRestaurant} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/restaurants/:name" component={RestaurantDetails} />
           <Route path="*" component={NotFound} />
         </Switch>
         <Footer />

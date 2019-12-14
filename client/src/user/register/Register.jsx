@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
+import { register } from '../../services/auth-service';
 
 const Register = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    const credentialsAreNotSet = !email || !password;
     
-    if(email === '') {
-      setError("Email is not valid!")
+    if(credentialsAreNotSet) {
+      setError("Please provide your credentials!")
     } else {
-      setError(null)
+      setError(null);
+
+      const response = await register(email, password);
+
+      if (response && response.data) {
+        // TODO: DO LOGIN AUTOMATICALLY AND THEN REDIRECT TO HOME
+      }
     }
-    console.log({email, password})
   }
 
   return (

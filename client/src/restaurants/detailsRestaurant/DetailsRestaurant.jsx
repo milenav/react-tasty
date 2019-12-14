@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBIcon,
-  MDBBtn,
-  MDBModal,
-  MDBModalHeader,
-  MDBModalBody,
-  MDBModalFooter
-} from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBCard, MDBCardUp, MDBAvatar, MDBCardBody } from 'mdbreact';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,7 +9,7 @@ import Slider from "react-slick";
 import { menuCarouselOptions } from '../../utils/constants';
 import { getRestaurantDetails, placeOrder } from '../../services/restaurant-service';
 
-const DetailsRestaurant = (props) => {
+const RestaurantDetails = (props) => {
   const [isOrderInProgress, setIsOrderInProgress] = useState(false);
   const [isOrderCompleted, setIsOrderCompleted] = useState(false);
   const [restaurant, setRestaurant] = useState(null);
@@ -43,22 +33,26 @@ const DetailsRestaurant = (props) => {
       getRestaurantByName(name);
     }
   }, [props.match.params]);
+  
 
   return (
     restaurant ? (
       <div>
         <MDBContainer fluid>
           <MDBRow>
-            <MDBCol size={8}>
-              <img
-                src="https://images.immediate.co.uk/production/volatile/sites/4/2018/08/GettyImages-103624710-1cfef36.jpg?quality=45&resize=960,413"
-                alt="menu background"
-              />
+            <MDBCol className="md-10">
+            <MDBCard className="face front img-fluid">
+            <MDBCardBody>
+
+              <img className="card-img-top" src="https://exploremcallen.com/wp-content/uploads/2018/04/international-cuisine.jpg" alt="menu background" />
+       
+              </MDBCardBody>
+            </MDBCard>
 
               <MDBContainer>
                 <MDBRow>
                   <MDBCol>
-                    <Slider {...menuCarouselOptions}>
+                    <Slider {...menuCarouselOptions}> 
                       <div onClick={() => setMenuItems(restaurant.menu)}>All</div>
                       {
                         restaurant.categories && restaurant.categories.map((category) => {
@@ -74,7 +68,7 @@ const DetailsRestaurant = (props) => {
                           );
                         })
                       }
-                    </Slider>
+                    </Slider> 
                   </MDBCol>
                 </MDBRow>
               </MDBContainer>
@@ -84,8 +78,10 @@ const DetailsRestaurant = (props) => {
                 menuItems.map((item, index) => {
                   return (
                     <MDBRow key={index} onClick={() => setOrderItems([...orderItems, item])}>
-                      <MDBCol size={12}>
+                      <MDBCol className="md-6">
+                      <MDBCard>
                         {item.name} - {item.price} EUR
+                        </MDBCard>
                       </MDBCol>
                     </MDBRow>
                   );
@@ -93,7 +89,7 @@ const DetailsRestaurant = (props) => {
               }
             </MDBCol>
 
-            <MDBCol size={4}>
+            <MDBCol className="md-4">
               <h2>{restaurant.name}</h2>
 
               <MDBContainer fluid={true}>
@@ -228,4 +224,4 @@ const DetailsRestaurant = (props) => {
   )
 }
 
-export default DetailsRestaurant;
+export default RestaurantDetails;
