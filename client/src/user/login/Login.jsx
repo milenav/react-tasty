@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import { login } from '../../services/auth-service';
+import AppContext from '../../app/AppContext';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const appContext = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    if(email === '') {
-      setError("Email is not valid!");
+
+    if (!email || !password) {
+      setError("Please provide your credentials!");
     } else {
-      const response = await login(email, password);
-      
-      if (response && response.data && response.data.token) {
-        setError(null);
-        // TODO: Redirect to HOMEAPGE
-      }
+      setError(null);
+      appContext.loginUser(email, password);
     }
   }
 
@@ -30,7 +28,7 @@ const Login = (props) => {
             <p className="h4 text-center my-4">Login</p>
             <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
               Your email
-            </label>
+              </label>
             <input
               type="email"
               id="defaultFormLoginEmailEx"
@@ -38,10 +36,10 @@ const Login = (props) => {
               onChange={e => setEmail(e.target.value)}
               value={email}
             />
-            
+
             <label htmlFor="defaultFormLoginPasswordEx" className="grey-text mt-4">
               Your password
-            </label>
+              </label>
             <input
               type="password"
               id="defaultFormLoginPasswordEx"

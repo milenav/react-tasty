@@ -1,17 +1,32 @@
 import config from '../utils/config';
-
-const __tokenKey = 'tastyToken';
+import { tokenKey } from '../utils/constants';
 
 const __setSecurityToken = (token) => {
-    localStorage.setItem(__tokenKey, token);
+    if (!token) {
+        localStorage.removeItem(tokenKey);
+    } else {
+        localStorage.setItem(tokenKey, token);
+    }
 };
+
+/**
+ * Check for set token into localStorage
+ * @name hasTokenSet
+ * @returns {Boolean} hasTokenSet
+ */
+export const hasTokenSet = () => {
+    const token = getToken();
+    const hasTokenSet = token !== undefined && token !== null;
+
+    return hasTokenSet;
+}
 
 /**
  * Get localStorage stored API token
  * @name getToken 
  */
 export const getToken = () => {
-    const token = localStorage.getItem(__tokenKey);
+    const token = localStorage.getItem(tokenKey);
 
     return token;
 };
@@ -48,4 +63,8 @@ export const login = async (email, password) => {
     __setSecurityToken(json.data.token);
 
     return json;
+};
+
+export const logout = () => {
+  __setSecurityToken(null);
 };

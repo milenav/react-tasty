@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import { login, register } from '../../services/auth-service';
+import AppContext from '../../app/AppContext';
 
 const Register = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const appContext = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -19,11 +21,7 @@ const Register = (props) => {
       setError(null);
 
       if (registerResponse && registerResponse.data) {
-        const loginResponse = await login(email, password);
-
-        if (loginResponse && loginResponse.data && loginResponse.data.token) {
-          // TODO: Redirect to HOME PAGE
-        }
+        appContext.loginUser();
       }
     }
   }
