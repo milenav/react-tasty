@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  MDBContainer,
-  MDBCol,
-  MDBRow,
-  MDBCard,
-  MDBCardBody,
-  MDBNavLink,
-  MDBCardImage,
-  MDBIcon
-} from 'mdbreact';
+import { MDBContainer, MDBCol, MDBRow, MDBCard, MDBCardBody, MDBNavLink, MDBCardImage, MDBIcon } from 'mdbreact';
 
 import { deliveryTypes, kitchenTypes } from '../../utils/constants';
 
@@ -120,7 +111,7 @@ const AllRestaurants = () => {
                   <MDBCol className="mb-3" key={restaurant.name} size="3">
                     <MDBCard className="h-100">
                       <MDBCardBody className=" d-flex justify-content-center flex-wrap">
-                        <MDBNavLink to={`/restaurants/${restaurant.name}`}>
+                        <MDBNavLink to={`/restaurant/${restaurant.name}`}>
                           <MDBCardImage src={restaurant.logoUrl} alt="Logo" />
                         </MDBNavLink>
                       </MDBCardBody>

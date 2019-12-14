@@ -5,14 +5,14 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Navigation from './navigation/Navigation';
-import Footer from './footer/Footer';
-import NotFound from './notFound/NotFound';
-import Home from './home/Home';
-import AllRestaurants from './restaurants/allRestaurants/AllRestaurants';
-import CreateRestaurant from './restaurants/createRestaurant/CreateRestaurant';
-import Register from './user/register/Register';
-import Login from './user/login/Login';
+import Navigation from '../navigation/Navigation';
+import Footer from '../footer/Footer';
+import NotFound from '../notFound/NotFound';
+import Home from '../home/Home';
+import AllRestaurants from '../restaurants/allRestaurants/AllRestaurants';
+import CreateRestaurant from '../restaurants/createRestaurant/CreateRestaurant';
+import Register from '../user/register/Register';
+import Login from '../user/login/Login';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
 
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/restaurants" component={AllRestaurants} />
+          <Route path="/restaurant" component={AllRestaurants} />
           <Route path="/create" component={CreateRestaurant} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
