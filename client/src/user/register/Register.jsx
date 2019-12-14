@@ -21,7 +21,7 @@ const Register = (props) => {
       setError(null);
 
       if (registerResponse && registerResponse.data) {
-        appContext.loginUser();
+        appContext.loginUser(email, password);
       }
     }
   }
