@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
+import { login } from '../../services/auth-service';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     
     if(email === '') {
-      setError("Email is not valid!")
+      setError("Email is not valid!");
     } else {
-      setError(null)
+      const response = await login(email, password);
+      
+      if (response && response.data && response.data.token) {
+        setError(null);
+        // TODO: Redirect to HOMEAPGE
+      }
     }
-    console.log({email, password})
   }
 
   return (

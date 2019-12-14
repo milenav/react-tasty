@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
-import { register } from '../../services/auth-service';
+import { login, register } from '../../services/auth-service';
 
 const Register = (props) => {
   const [email, setEmail] = useState('');
@@ -10,16 +10,20 @@ const Register = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const credentialsAreNotSet = !email || !password;
-    
+
     if(credentialsAreNotSet) {
       setError("Please provide your credentials!")
     } else {
+      const registerResponse = await register(email, password);
+
       setError(null);
 
-      const response = await register(email, password);
+      if (registerResponse && registerResponse.data) {
+        const loginResponse = await login(email, password);
 
-      if (response && response.data) {
-        // TODO: DO LOGIN AUTOMATICALLY AND THEN REDIRECT TO HOME
+        if (loginResponse && loginResponse.data && loginResponse.data.token) {
+          // TODO: Redirect to HOME PAGE
+        }
       }
     }
   }
