@@ -35,7 +35,7 @@ export const menuCarouselOptions = {
 };
 
 /**
- * The name of the key which holds the value of the token into localStorage
- * @name tokenKey
+ * The name of the key which store the user data
+ * @name storageKey
  */
-export const tokenKey = 'tastyToken';
+export const storageKey = 'tastyStorage';
