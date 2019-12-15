@@ -6,6 +6,12 @@ export default {
 
         return restaurantService.create(name, type, logoUrl, req.account)
             .then((createdRestaurant) => {
+                req.account.restaurants.push(createdRestaurant);
+                req.account.save();
+                console.log(req.account)
+                return createdRestaurant;
+            })
+            .then((createdRestaurant) => {
                 return res.json({
                     data: createdRestaurant
                 });

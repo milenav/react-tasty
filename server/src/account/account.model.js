@@ -41,6 +41,13 @@ const accountSchema = new dbSchema({
     roles: {
         type: Array,
         default: [] 
+    },
+    /**
+     * @name restaurants
+     * @type {Array} collection of restaurants
+     */
+    restaurants: {
+        type: [dbSchema.Types.ObjectId]
     }
 }, accountSchemaOptions);
 

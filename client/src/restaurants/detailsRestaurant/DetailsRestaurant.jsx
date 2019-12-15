@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBCard, MDBCardUp, MDBAvatar, MDBCardBody } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBCard, MDBCardUp, MDBAvatar, MDBCardBody, MDBCardFooter } from 'mdbreact';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,6 +16,10 @@ const RestaurantDetails = (props) => {
   const [menuItems, setMenuItems] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
   const total = orderItems.reduce((sum, i) => i.price + sum, 0);
+
+  const deleteRestaurant = () => {
+    console.log('DELETE!');
+  };
 
   useEffect(() => {
     const { name } = props.match.params;
@@ -45,6 +49,10 @@ const RestaurantDetails = (props) => {
               <MDBCardBody className="mx-auto">
                 <img  className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
               </MDBCardBody>
+
+              <MDBCardFooter>
+                <MDBBtn onClick={deleteRestaurant}>Delete restaurant</MDBBtn>
+              </MDBCardFooter>
             </MDBCard>
 
               {/* Slider */}
