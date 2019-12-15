@@ -1,4 +1,5 @@
 import config from '../utils/config';
+import { getToken } from './auth-service';
 
 /**
  * Get collection of restaurants
@@ -7,7 +8,8 @@ import config from '../utils/config';
  */
 export const getAllRestaurants = async (limit = 10) => {
   try {
-    const request = await fetch(`${config.apiBaseUrl}/restaurant?&limit=${limit}`);
+    const headers = { 'Authorization': `Bearer ${getToken()}`};
+    const request = await fetch(`${config.apiBaseUrl}/restaurant?&limit=${limit}`, { headers });
     const response = await request.json();
 
     return response;
@@ -23,7 +25,9 @@ export const getAllRestaurants = async (limit = 10) => {
  */
 export const getRestaurantDetails = async (restaurantName) => {
   try {
-    const request = await fetch(`${config.apiBaseUrl}/restaurant/${restaurantName}`);
+
+    const headers = { 'Authorization': `Bearer ${getToken()}`};
+    const request = await fetch(`${config.apiBaseUrl}/restaurant/${restaurantName}`, { headers });
     const response = await request.json();
     return response;
   } catch (ex) {

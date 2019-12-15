@@ -6,8 +6,8 @@ import { accountType } from '../account/account.constants';
 const router = new Router();
 
 router
-    .get('/', restaurantController.list)
-    .get('/:name', restaurantController.details)
-    .post('/', [auth(accountType.restaurateur)], restaurantController.create)
+    .get('/', [auth()], restaurantController.list)
+    .get('/:name', [auth()], restaurantController.details)
+    .post('/', [auth()], restaurantController.create)
 
 export default router;

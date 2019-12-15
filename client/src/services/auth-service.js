@@ -25,11 +25,11 @@ export const hasTokenSet = () => {
  * Get localStorage stored API token
  * @name getToken 
  */
-// export const getToken = () => {
-//     const token = localStorage.getItem(tokenKey);
+export const getToken = () => {
+    const token = localStorage.getItem(tokenKey);
 
-//     return token;
-// };
+    return token;
+};
 
 /**
  * 
