@@ -9,6 +9,39 @@ const __setUser = (userData) => {
     }
 };
 
+const __getStorage = (key) => {
+    const storage = localStorage.getItem(key);
+    if (!storage) return undefined;
+     
+    const storageJson = JSON.parse(storage);
+    return storageJson;
+}
+
+/**
+ * Updates a given property in localStorage user data
+ * @name updateUserProp
+ * @param {String} key storage property to update
+ * @param {*} updateData The data which to be set
+ */
+export const updateUserProp = (key, updateData) => {
+    const storage = __getStorage(storageKey);
+
+    if (storage) {
+        const storagePropToUpdate = storage[key];
+        let updatedStorage = null;
+
+        if (Array.isArray(storagePropToUpdate)) {
+            updatedStorage = [...storagePropToUpdate, updateData];
+        } else {
+            updatedStorage = updateData;
+        }
+
+        storage[key] = updatedStorage;
+
+        localStorage.setItem(storageKey, JSON.stringify(storage));
+    }
+};
+
 /**
  * Check for set token into localStorage
  * @name hasTokenSet
@@ -26,10 +59,9 @@ export const hasTokenSet = () => {
  * @name getToken 
  */
 export const getToken = () => {
-    const storage = localStorage.getItem(storageKey);
-    const storageJson = JSON.parse(storage);
+    const storage = __getStorage(storageKey);
 
-    return storageJson ? storageJson.token : undefined;
+    return storage ? storage.token : undefined;
 };
 
 /**

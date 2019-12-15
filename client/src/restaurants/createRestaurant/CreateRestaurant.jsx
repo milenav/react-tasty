@@ -2,6 +2,7 @@ import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import { useState } from "react";
 import { createNewRestaurant } from "../../services/restaurant-service";
+import { updateUserProp } from "../../services/auth-service";
 
 const CreateRestaurant = (props) => {
   const [restaurantData, setRestaurantData] = useState({});
@@ -19,6 +20,8 @@ const CreateRestaurant = (props) => {
     const restaurant = await createNewRestaurant(name, type, logoUrl);
 
     if (restaurant && restaurant.data) {
+      updateUserProp('restaurants', restaurant.data._id);
+      
       props.history.push('/restaurant');
     } else {
       // TODO: Set error
