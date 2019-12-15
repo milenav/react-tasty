@@ -18,8 +18,10 @@ const CreateRestaurant = (props) => {
 
     const restaurant = await createNewRestaurant(name, type, logoUrl);
 
-    if (restaurant) {
+    if (restaurant && restaurant.data) {
       props.history.push('/restaurant');
+    } else {
+      // TODO: Set error
     }
   }
 
