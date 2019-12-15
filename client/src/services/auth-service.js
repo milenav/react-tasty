@@ -1,11 +1,11 @@
 import config from '../utils/config';
-import { tokenKey } from '../utils/constants';
+import { storageKey } from '../utils/constants';
 
-const __setSecurityToken = (token) => {
-    if (!token) {
-        localStorage.removeItem(tokenKey);
+const __setUser = (userData) => {
+    if (!userData) {
+        localStorage.removeItem(storageKey);
     } else {
-        localStorage.setItem(tokenKey, token);
+        localStorage.setItem(storageKey, JSON.stringify(userData));
     }
 };
 
@@ -15,7 +15,7 @@ const __setSecurityToken = (token) => {
  * @returns {Boolean} hasTokenSet
  */
 export const hasTokenSet = () => {
-    const token = localStorage.getItem(tokenKey);
+    const token = getToken();
     const hasTokenSet = token !== undefined && token !== null;
 
     return hasTokenSet;
@@ -26,9 +26,10 @@ export const hasTokenSet = () => {
  * @name getToken 
  */
 export const getToken = () => {
-    const token = localStorage.getItem(tokenKey);
+    const storage = localStorage.getItem(storageKey);
+    const storageJson = JSON.parse(storage);
 
-    return token;
+    return storageJson ? storageJson.token : undefined;
 };
 
 /**
@@ -60,11 +61,11 @@ export const login = async (email, password) => {
     const response = await fetch(endpoint, { body: JSON.stringify(body), method: 'POST', headers });
     const json = await response.json();
 
-    __setSecurityToken(json.data.token);
+    __setUser(json.data);
 
     return json;
 };
 
 export const logout = () => {
-  __setSecurityToken(null);
+  __setUser(null);
 };
