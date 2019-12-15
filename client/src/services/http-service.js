@@ -9,12 +9,12 @@ export const post = (endpoint, data, options = {}) => {
 };
 
 // TODO: Implement error handling for this generic method
-const __doRequest = async (type, endpoint, data = null, opt) => {
+const __doRequest = async (method, endpoint, data = null, opt) => {
     const headers = {'Content-Type': 'Application/json',  'Authorization': `Bearer ${getToken()}`};
-    const options = { ...opt, headers };
+    const options = { ...opt, method, headers, };
 
     if (data) {
-        options.body = data;
+        options.body = JSON.stringify(data);
     }
 
     const response = await fetch(endpoint, options);
