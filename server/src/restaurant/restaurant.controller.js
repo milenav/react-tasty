@@ -8,7 +8,7 @@ export default {
             .then((createdRestaurant) => {
                 req.account.restaurants.push(createdRestaurant);
                 req.account.save();
-                console.log(req.account)
+                
                 return createdRestaurant;
             })
             .then((createdRestaurant) => {
@@ -37,5 +37,9 @@ export default {
                 })
             })
             .catch((err) => next({ message: err }));
+    },
+    getMyRestaurants(req, res, next) {
+        console.log(req.account.id)
+        // return restaurantService.getMyRestaurants(req.account.id);
     }
 }

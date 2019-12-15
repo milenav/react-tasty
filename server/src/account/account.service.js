@@ -31,7 +31,7 @@ export default {
                 if (err) {
                     return reject(err);
                 }
-
+                console.log(accountData);
                 return resolve(accountData);
             })(req, res);
         })

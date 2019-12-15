@@ -47,7 +47,8 @@ const accountSchema = new dbSchema({
      * @type {Array} collection of restaurants
      */
     restaurants: {
-        type: [dbSchema.Types.ObjectId]
+        type: [dbSchema.Types.ObjectId],
+        default: []
     }
 }, accountSchemaOptions);
 
@@ -65,9 +66,9 @@ accountSchema.methods.comparePasswords = function(possiblePassword) {
  * @name getPublicFields
  */
 accountSchema.methods.getPublicFields = function() {
-    const { type, profile, email, confirmed, avatar } = this;
+    const { type, profile, email, confirmed, avatar, restaurants } = this;
 
-    return { type, profile, email, confirmed, avatar };
+    return { type, profile, email, confirmed, avatar, restaurants };
 }
 
 accountSchema.methods.setProfile = function(profile) {
