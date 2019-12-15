@@ -14,5 +14,8 @@ export default {
     },
     getDetails(restaurantName) {
         return Restaurant.findOne({ name: restaurantName });
+    },
+    delete(restaurantId) {
+        return Restaurant.findByIdAndRemove(restaurantId);
     }
 }

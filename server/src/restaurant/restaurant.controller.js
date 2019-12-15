@@ -8,7 +8,7 @@ export default {
             .then((createdRestaurant) => {
                 req.account.restaurants.push(createdRestaurant);
                 req.account.save();
-                
+
                 return createdRestaurant;
             })
             .then((createdRestaurant) => {
@@ -29,7 +29,7 @@ export default {
     },
     details(req, res, next) {
         const { name } = req.params;
-        
+
         return restaurantService.getDetails(name)
             .then((restaurant) => {
                 return res.json({
@@ -38,8 +38,29 @@ export default {
             })
             .catch((err) => next({ message: err }));
     },
-    getMyRestaurants(req, res, next) {
-        console.log(req.account.id)
-        // return restaurantService.getMyRestaurants(req.account.id);
+    delete(req, res, next) {
+        const { account, params } = req;
+
+        if (params.id) {
+            const ownRestaurantIdIndex = account.restaurants.indexOf(params.id);
+
+            if (ownRestaurantIdIndex > -1) {
+                return restaurantService.delete(params.id)
+                    .then(() => {
+                        const restaurantsUpdate = account.restaurants.slice();
+
+                        restaurantsUpdate.splice(ownRestaurantIdIndex, 1);
+                        account.restaurants = restaurantsUpdate;
+
+                        return account.save();
+                    })
+                    .then(() => res.json({}))
+                    .catch((err) => next({ message: err }));
+            }
+
+            return res.status(401);
+        }
+
+        return res.stauts(400);
     }
 }
