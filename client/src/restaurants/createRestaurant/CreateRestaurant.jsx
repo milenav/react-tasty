@@ -3,18 +3,18 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import { useState } from "react";
 import { createNewRestaurant } from "../../services/restaurant-service";
 
-const CreateRestaurant = () => {
+const CreateRestaurant = (props) => {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [logoUrl, setLogoUrl] = useState('');
 
   const handleSubmitNewRestaurant = async (e) => {
     e.preventDefault();
-    
+
     const restaurant = await createNewRestaurant(name, type, logoUrl);
 
     if (restaurant) {
-      // TODO: Redirect to restaurants list page
+      props.history.push('/restaurant');
     }
   }
 
