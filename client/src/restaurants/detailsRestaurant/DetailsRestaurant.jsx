@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import { menuCarouselOptions } from '../../utils/constants';
+import { getUserProp } from '../../services/auth-service';
 import { getRestaurantDetails, placeOrder } from '../../services/restaurant-service';
 
 const RestaurantDetails = (props) => {
@@ -15,10 +16,13 @@ const RestaurantDetails = (props) => {
   const [restaurant, setRestaurant] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
+  const [isOwner, setIsOwner] = useState(false);
   const total = orderItems.reduce((sum, i) => i.price + sum, 0);
 
   const deleteRestaurant = () => {
-    console.log('DELETE!');
+    if (isOwner) {
+      console.log('DELETE!');
+    }
   };
 
   useEffect(() => {
@@ -29,6 +33,13 @@ const RestaurantDetails = (props) => {
         const restaurant = await getRestaurantDetails(restaurantName);
 
         if (restaurant && restaurant.data) {
+          const myRestaurants = getUserProp('restaurants');
+          if (myRestaurants && myRestaurants.length) {
+            const isTheLoadedRestaurantMine = myRestaurants.includes(restaurant.data._id);
+
+            setIsOwner(isTheLoadedRestaurantMine);
+          }
+
           setRestaurant(restaurant.data);
           setMenuItems(restaurant.data.menu);
         }
@@ -37,7 +48,7 @@ const RestaurantDetails = (props) => {
       getRestaurantByName(name);
     }
   }, [props.match.params]);
-  
+
 
   return (
     restaurant ? (
@@ -45,21 +56,25 @@ const RestaurantDetails = (props) => {
         <MDBContainer fluid className="ml-5">
           <MDBRow>
             <MDBCol className="md-8">
-            <MDBCard className="face front img-fluid">
-              <MDBCardBody className="mx-auto">
-                <img  className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
-              </MDBCardBody>
+              <MDBCard className="face front img-fluid">
+                <MDBCardBody className="mx-auto">
+                  <img className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
+                </MDBCardBody>
 
-              <MDBCardFooter>
-                <MDBBtn onClick={deleteRestaurant}>Delete restaurant</MDBBtn>
-              </MDBCardFooter>
-            </MDBCard>
+                {
+                  isOwner ? (
+                    <MDBCardFooter>
+                      <MDBBtn onClick={deleteRestaurant}>Delete restaurant</MDBBtn>
+                    </MDBCardFooter>
+                  ) : (null)
+                }
+              </MDBCard>
 
               {/* Slider */}
               <MDBContainer className="md-8 mx-5">
                 <MDBRow>
                   <MDBCol>
-                    <Slider {...menuCarouselOptions}> 
+                    <Slider {...menuCarouselOptions}>
                       <div onClick={() => setMenuItems(restaurant.menu)}>All</div>
                       {
                         restaurant.categories && restaurant.categories.map((category) => {
@@ -75,7 +90,7 @@ const RestaurantDetails = (props) => {
                           );
                         })
                       }
-                    </Slider> 
+                    </Slider>
                   </MDBCol>
                 </MDBRow>
               </MDBContainer>
@@ -86,8 +101,8 @@ const RestaurantDetails = (props) => {
                   return (
                     <MDBRow key={index} onClick={() => setOrderItems([...orderItems, item])}>
                       <MDBCol className="md-8">
-                      <MDBCard>
-                        {item.name} - {item.price} EUR
+                        <MDBCard>
+                          {item.name} - {item.price} EUR
                         </MDBCard>
                       </MDBCol>
                     </MDBRow>
@@ -97,8 +112,8 @@ const RestaurantDetails = (props) => {
             </MDBCol>
 
             <MDBCol className="md-4 mx-5 mt-5">
-            <MDBContainer fluid={true}>
-              <h2>{restaurant.name}</h2>
+              <MDBContainer fluid={true}>
+                <h2>{restaurant.name}</h2>
                 {
                   orderItems && orderItems.length ? (
                     <div style={{ marginBottom: 16 }}>
@@ -123,7 +138,7 @@ const RestaurantDetails = (props) => {
 
                                       setOrderItems(itemsCopy);
                                     }}>
-                                      <MDBIcon 
+                                      <MDBIcon
                                         icon="times-circle"
                                       />
                                     </MDBCol>
