@@ -4,7 +4,7 @@ export default {
     create(req, res, next) {
         const { name, type, logoUrl } = req.body;
 
-        return restaurantService.create(name, type, logoUrl)
+        return restaurantService.create(name, type, logoUrl, req.account)
             .then((createdRestaurant) => {
                 return res.json({
                     data: createdRestaurant

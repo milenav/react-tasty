@@ -22,6 +22,14 @@ const restaurantSchema = new dbSchema({
         required: true,
         unique: true
     },
+    /***
+     * @name owner
+     * @type {String}
+     */
+    owner: {
+        type: dbSchema.Types.ObjectId,
+        required: true
+    },
     /**
      * @name kitchens
      * @type {Array}
