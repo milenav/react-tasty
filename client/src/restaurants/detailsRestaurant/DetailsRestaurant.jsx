@@ -42,9 +42,8 @@ const RestaurantDetails = (props) => {
           <MDBRow>
             <MDBCol className="md-10">
             <MDBCard className="face front img-fluid">
-              <MDBCardBody>
-                {/* TODO: Tweak with CSS */}
-                <img style={{maxWidth: '600px'}} className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
+              <MDBCardBody className="mx-auto">
+                <img style={{maxWidth: '20rem', maxHeight: '20rem'}} className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
               </MDBCardBody>
             </MDBCard>
 

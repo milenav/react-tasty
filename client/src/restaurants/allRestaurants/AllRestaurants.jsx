@@ -105,7 +105,7 @@ const AllRestaurants = () => {
             {
               restaurantsList.map((restaurant) => {
                 return (
-                  <MDBCol lg="3" key={restaurant.name} >
+                  <MDBCol lg="4" className="card-deck mb-5 mr-2"  key={restaurant.name} >
                     <MDBCard cascade narrow ecommerce>
                         <MDBNavLink to={`/restaurant/${restaurant.name}`}>
                           <MDBCardImage 
