@@ -1,5 +1,5 @@
 import config from '../utils/config';
-import { get, post } from './http-service';
+import { get, post, del } from './http-service';
 
 /**
  * Get collection of restaurants
@@ -44,6 +44,12 @@ export const createNewRestaurant = (name, type, logoUrl) => {
   const response = post(endpoint, data);
 
   return response;
+};
+
+export const deleteRestaurant = (restaurantId) => {
+  const endpoint = `${config.apiBaseUrl}/restaurant/${restaurantId}`;
+  
+  del(endpoint);
 };
 
 export const placeOrder = (restaurantId, order) => {
