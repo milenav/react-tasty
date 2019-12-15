@@ -38,9 +38,9 @@ export const getRestaurantDetails = (restaurantName) => {
  * @param {String} name The name of the restaurant
  * @param {String} type The type of the restaurant
  */
-export const createNewRestaurant = (name, type) => {
+export const createNewRestaurant = (name, type, logoUrl) => {
   const endpoint = `${config.apiBaseUrl}/restaurant`;
-  const data = { name, type };
+  const data = { name, type, logoUrl };
   const response = post(endpoint, data);
 
   return response;

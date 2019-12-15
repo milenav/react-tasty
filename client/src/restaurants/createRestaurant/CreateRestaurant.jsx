@@ -6,12 +6,16 @@ import { createNewRestaurant } from "../../services/restaurant-service";
 const CreateRestaurant = () => {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
+  const [logoUrl, setLogoUrl] = useState('');
 
   const handleSubmitNewRestaurant = async (e) => {
     e.preventDefault();
     
-    const restaurant = await createNewRestaurant(name, type);
-    console.log(restaurant);
+    const restaurant = await createNewRestaurant(name, type, logoUrl);
+
+    if (restaurant) {
+      // TODO: Redirect to restaurants list page
+    }
   }
 
   return (
@@ -40,15 +44,15 @@ const CreateRestaurant = () => {
               onChange={(e) => setType(e.target.value)}
             />
 
-            {/* TODO: Implement on later stage */}
-            {/* <label htmlFor="LogoUrl" className="grey-text mt-4">
+            <label htmlFor="LogoUrl" className="grey-text mt-4">
               Restaurant Logo
             </label>
             <input
               type="text"
               id="LogoUrl"
               className="form-control"
-            /> */}
+              onChange={(e) => setLogoUrl(e.target.value)}
+            />
             
             <div className="text-center mt-4">
               <MDBBtn className="white-text" color="default" type="submit">Create</MDBBtn>
