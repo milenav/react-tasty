@@ -4,9 +4,14 @@ import { useState } from "react";
 import { createNewRestaurant } from "../../services/restaurant-service";
 
 const CreateRestaurant = (props) => {
-  const [name, setName] = useState('');
-  const [type, setType] = useState('');
-  const [logoUrl, setLogoUrl] = useState('');
+  const [restaurantData, setRestaurantData] = useState({});
+
+  const fillOutRestaurantData = ({ target }) => {
+    const { name, value } = target;
+    const newData = { ...restaurantData, [name]: value };
+
+    setRestaurantData(newData);
+  };
 
   const handleSubmitNewRestaurant = async (e) => {
     e.preventDefault();
@@ -18,20 +23,30 @@ const CreateRestaurant = (props) => {
     }
   }
 
+  const {
+    name,
+    type,
+    logoUrl,
+    minOrder
+  } = restaurantData;
+
   return (
     <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
           <form onSubmit={handleSubmitNewRestaurant}>
             <p className="h4 text-center my-4">Create New Restaurant</p>
+
             <label htmlFor="RestaurantName" className="grey-text">
               Restaurant Name
             </label>
             <input
               type="text"
+              name="name"
+              value={name || ''}
               id="RestaurantName"
               className="form-control"
-              onChange={(e) => setName(e.target.value)}
+              onChange={fillOutRestaurantData}
             />
             
             <label htmlFor="restaurant-type" className="grey-text mt-4">
@@ -40,8 +55,10 @@ const CreateRestaurant = (props) => {
             <input
               type="text"
               id="restaurant-type"
+              name="type"
+              value={type || ''}
               className="form-control"
-              onChange={(e) => setType(e.target.value)}
+              onChange={fillOutRestaurantData}
             />
 
             <label htmlFor="LogoUrl" className="grey-text mt-4">
@@ -50,10 +67,24 @@ const CreateRestaurant = (props) => {
             <input
               type="text"
               id="LogoUrl"
+              name="logoUrl"
+              value={logoUrl || ''}
               className="form-control"
-              onChange={(e) => setLogoUrl(e.target.value)}
+              onChange={fillOutRestaurantData}
             />
             
+            <label htmlFor="min-order" className="grey-text mt-4">
+              Min order
+            </label>
+            <input
+              type="number"
+              id="min-order"
+              name="minOrder"
+              value={minOrder || 0}
+              className="form-control"
+              onChange={fillOutRestaurantData}
+            />
+
             <div className="text-center mt-4">
               <MDBBtn className="white-text" color="default" type="submit">Create</MDBBtn>
             </div>
