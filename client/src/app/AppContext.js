@@ -13,9 +13,7 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         const hasToken = hasTokenSet();
 
-        if (hasToken) {
-            setIsLoggedIn(true);
-        }
+        setIsLoggedIn(hasToken);
     }, []);
 
     const loginUser = async (email, password) => {

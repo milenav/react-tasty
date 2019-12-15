@@ -15,7 +15,7 @@ const PrivateRoute = ({
     fallbackComponent: FallBackComponent,
     redirect = '/',
     allowed, ...rest
-  }) => {
+}) => {
     return (
         <Route
             {...rest}
@@ -23,12 +23,13 @@ const PrivateRoute = ({
                 (props) => allowed ? (
                     <Component {...rest} {...props} />
                 ) : (
-                    FallBackComponent ? (<FallBackComponent />) : (<Redirect path="*" to={redirect} />)
-                )
+                        FallBackComponent ? (<FallBackComponent />) : (<Redirect path="*" to={redirect} />)
+                    )
             }
         />
     );
-  };
+};
+
 
 const AppRoutes = () => {
     const { isLoggedIn } = useContext(AppContext);
@@ -36,10 +37,10 @@ const AppRoutes = () => {
     return (
         <Switch>
             <Route path="/" exact component={Home} />
-            <PrivateRoute allowed={isLoggedIn} path="/restaurant" component={AllRestaurants} />
+            <PrivateRoute allowed={isLoggedIn} exact  path="/restaurant" component={AllRestaurants} />
             <PrivateRoute allowed={isLoggedIn} path="/create" component={CreateRestaurant} />
-            <PrivateRoute allowed={isLoggedIn} path="/restaurants/:name" component={RestaurantDetails} />
-            
+            <PrivateRoute allowed={isLoggedIn} path="/restaurant/:name" component={RestaurantDetails} />
+
             <PrivateRoute allowed={!isLoggedIn} path="/register" component={Register} />
             <PrivateRoute allowed={!isLoggedIn} path="/login" component={Login} />
 

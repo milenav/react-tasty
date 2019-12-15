@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { MDBContainer, MDBCol, MDBRow, MDBCard, MDBCardBody, MDBNavLink, MDBCardImage, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBCol, MDBRow, MDBCard, MDBCardBody, MDBNavLink, MDBCardImage, MDBCardTitle, MDBIcon, MDBCardFooter } from 'mdbreact';
 
 import { deliveryTypes, kitchenTypes } from '../../utils/constants';
 
@@ -27,12 +27,29 @@ const AllRestaurants = () => {
 
   return (
     <MDBContainer>
+          <MDBRow className="mb-5 mt-4" >
+            <MDBCol size={12}>
+              <div className="input-group form-sm form-1 pl-0">
+                <input
+                  type="search"
+                  className="form-control"
+                  placeholder="Улица и номер"
+                  aria-label="Search address"
+                />
+
+                <div className="input-group-append">
+                  <span className="input-group-text lighten-3" id="basic-text1">
+                    <MDBIcon className="text-white" icon="search" />
+                  </span>
+                </div>
+              </div>
+            </MDBCol>
+          </MDBRow>
+
       <MDBRow>
-        <MDBCol size={3}>
-          <MDBRow className="no-gutters mt-4">
+        <MDBCol lg="3" md="3">
             <MDBCol>
               <h6 className="text-left">Цена за доставка</h6>
-
               {
                 deliveryTypes.map((orderType, index) => {
                   return (
@@ -56,9 +73,8 @@ const AllRestaurants = () => {
               }
             </MDBCol>
 
-            <MDBCol size={12} className="mt-3">
+            <MDBCol className="mb-5">
               <h6 className="text-left">Вид кухня</h6>
-
               {
                 kitchenTypes.map((kitchenType, index) => {
                   return (
@@ -81,39 +97,43 @@ const AllRestaurants = () => {
                 })
               }
             </MDBCol>
-          </MDBRow>
+         
         </MDBCol>
 
-        <MDBCol>
-          <MDBRow className="mb-5 mt-4">
-            <MDBCol size={12}>
-              <div className="input-group form-sm form-1 pl-0">
-                <input
-                  type="search"
-                  className="form-control"
-                  placeholder="Улица и номер"
-                  aria-label="Search address"
-                />
-
-                <div className="input-group-append">
-                  <span className="input-group-text lighten-3" id="basic-text1">
-                    <MDBIcon className="text-white" icon="search" />
-                  </span>
-                </div>
-              </div>
-            </MDBCol>
-          </MDBRow>
-
+        <MDBCol lg="9" md="9">
           <MDBRow>
             {
               restaurantsList.map((restaurant) => {
                 return (
-                  <MDBCol className="mb-3" key={restaurant.name} size="3">
-                    <MDBCard className="h-100">
-                      <MDBCardBody className=" d-flex justify-content-center flex-wrap">
-                        <MDBNavLink to={`/restaurants/${restaurant.name}`}>
-                          <MDBCardImage src={restaurant.logoUrl} alt="Logo" />
+                  <MDBCol lg="3" key={restaurant.name} >
+                    <MDBCard cascade narrow ecommerce>
+                        <MDBNavLink to={`/restaurant/${restaurant.name}`}>
+                          <MDBCardImage 
+                          cascade
+                          src={restaurant.logoUrl} 
+                          top
+                          alt="Logo" 
+                          overlay="white-slight"
+                          />
                         </MDBNavLink>
+                        <MDBCardBody cascade className="text-center">
+                        <MDBCardTitle>
+                          <strong>
+                        <h5 className="grey-text">{restaurant.name}</h5>
+                        </strong>
+                        </MDBCardTitle>
+ 
+              <MDBCardFooter className="px-1">
+                <span className="float-left">
+                <MDBIcon fab icon="facebook grey-text ml-3"/> 
+                </span>
+                <span className="center">
+                <MDBIcon icon="fa-share-alt grey-text ml-3"/> 
+                </span>
+                <span className="float-right">
+                <MDBIcon far icon="heart grey-text ml-3"/> 
+                </span>
+              </MDBCardFooter>
                       </MDBCardBody>
                     </MDBCard>
                   </MDBCol>

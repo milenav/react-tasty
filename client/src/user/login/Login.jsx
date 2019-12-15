@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
-import { login } from '../../services/auth-service';
 import AppContext from '../../app/AppContext';
 
 const Login = (props) => {

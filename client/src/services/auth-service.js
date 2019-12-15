@@ -15,7 +15,7 @@ const __setSecurityToken = (token) => {
  * @returns {Boolean} hasTokenSet
  */
 export const hasTokenSet = () => {
-    const token = getToken();
+    const token = localStorage.getItem(tokenKey);
     const hasTokenSet = token !== undefined && token !== null;
 
     return hasTokenSet;
@@ -25,11 +25,11 @@ export const hasTokenSet = () => {
  * Get localStorage stored API token
  * @name getToken 
  */
-export const getToken = () => {
-    const token = localStorage.getItem(tokenKey);
+// export const getToken = () => {
+//     const token = localStorage.getItem(tokenKey);
 
-    return token;
-};
+//     return token;
+// };
 
 /**
  * 
