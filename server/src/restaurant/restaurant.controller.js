@@ -2,9 +2,9 @@ import restaurantService from './restaurant.service';
 
 export default {
     create(req, res, next) {
-        const { name, type } = req.body;
+        const { name, type, logoUrl } = req.body;
 
-        return restaurantService.create(name, type)
+        return restaurantService.create(name, type, logoUrl)
             .then((createdRestaurant) => {
                 return res.json({
                     data: createdRestaurant
