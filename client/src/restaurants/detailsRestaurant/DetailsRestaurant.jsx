@@ -38,16 +38,17 @@ const RestaurantDetails = (props) => {
   return (
     restaurant ? (
       <div>
-        <MDBContainer fluid>
+        <MDBContainer fluid className="ml-5">
           <MDBRow>
-            <MDBCol className="md-10">
+            <MDBCol className="md-8">
             <MDBCard className="face front img-fluid">
               <MDBCardBody className="mx-auto">
-                <img style={{maxWidth: '20rem', maxHeight: '20rem'}} className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
+                <img  className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
               </MDBCardBody>
             </MDBCard>
 
-              <MDBContainer>
+              {/* Slider */}
+              <MDBContainer className="md-8 mx-5">
                 <MDBRow>
                   <MDBCol>
                     <Slider {...menuCarouselOptions}> 
@@ -76,7 +77,7 @@ const RestaurantDetails = (props) => {
                 menuItems.map((item, index) => {
                   return (
                     <MDBRow key={index} onClick={() => setOrderItems([...orderItems, item])}>
-                      <MDBCol className="md-6">
+                      <MDBCol className="md-8">
                       <MDBCard>
                         {item.name} - {item.price} EUR
                         </MDBCard>
@@ -87,17 +88,16 @@ const RestaurantDetails = (props) => {
               }
             </MDBCol>
 
-            <MDBCol className="md-4">
+            <MDBCol className="md-4 mx-5 mt-5">
+            <MDBContainer fluid={true}>
               <h2>{restaurant.name}</h2>
-
-              <MDBContainer fluid={true}>
                 {
                   orderItems && orderItems.length ? (
                     <div style={{ marginBottom: 16 }}>
                       {
                         orderItems.map((cartItem, index) => {
                           return (
-                            <MDBRow key={index} between={true} style={{ marginBottom: 8 }}>
+                            <MDBRow key={index} between={true}>
                               <MDBCol size="auto">
                                 {cartItem.name}
                               </MDBCol>
@@ -115,9 +115,8 @@ const RestaurantDetails = (props) => {
 
                                       setOrderItems(itemsCopy);
                                     }}>
-                                      <MDBIcon
-                                        style={{ color: '#FF0000' }}
-                                        icon="times"
+                                      <MDBIcon 
+                                        icon="times-circle"
                                       />
                                     </MDBCol>
                                   </MDBRow>
@@ -141,7 +140,7 @@ const RestaurantDetails = (props) => {
                   </MDBCol>
                 </MDBRow>
 
-                <MDBRow between={true}>
+                <MDBRow>
                   <MDBCol size="auto">
                     Total:
                   </MDBCol>
@@ -162,7 +161,8 @@ const RestaurantDetails = (props) => {
 
                   <MDBCol size="12">
                     <MDBBtn
-                      color="red"
+                      className="white-text mt-3"
+                      color="orange"
                       block
                       disabled={!orderItems || !orderItems.length || isOrderInProgress}
                       onClick={() => setOrderItems([])}>
@@ -172,6 +172,7 @@ const RestaurantDetails = (props) => {
 
                   <MDBCol size="12">
                     <MDBBtn
+                      className="white-text"
                       block
                       disabled={total < restaurant.minOrder || isOrderInProgress}
                       onClick={() => {

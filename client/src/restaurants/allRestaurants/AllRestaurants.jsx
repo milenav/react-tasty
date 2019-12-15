@@ -6,6 +6,7 @@ import { deliveryTypes, kitchenTypes } from '../../utils/constants';
 
 import { getAllRestaurants } from '../../services/restaurant-service';
 
+
 const AllRestaurants = () => {
   const [selectedKitchenType, setSelectedKitchenType] = useState('all');
   const [selectedOrderType, setSelectedOrderType] = useState('none');
@@ -27,10 +28,10 @@ const AllRestaurants = () => {
 
   return (
     <MDBContainer>
-          <MDBRow className="mb-5 mt-4" >
-            <MDBCol size={12}>
-              <div className="input-group form-sm form-1 pl-0">
-                <input
+          <MDBRow className="my-5" >
+            <MDBCol md="12" className="my-5 mx-auto">
+              <div className="input-group form-lg form-1 pl-0">
+                <input 
                   type="search"
                   className="form-control"
                   placeholder="Улица и номер"
@@ -46,7 +47,7 @@ const AllRestaurants = () => {
             </MDBCol>
           </MDBRow>
 
-      <MDBRow>
+      <MDBRow className="mt-5">
         <MDBCol lg="3" md="3">
             <MDBCol>
               <h6 className="text-left">Цена за доставка</h6>
@@ -105,7 +106,7 @@ const AllRestaurants = () => {
             {
               restaurantsList.map((restaurant) => {
                 return (
-                  <MDBCol lg="4" className="card-deck mb-5 mr-2"  key={restaurant.name} >
+                  <MDBCol lg="4" className="card-deck mb-5 mr-2" key={restaurant.name} >
                     <MDBCard cascade narrow ecommerce>
                         <MDBNavLink to={`/restaurant/${restaurant.name}`}>
                           <MDBCardImage 
@@ -122,18 +123,11 @@ const AllRestaurants = () => {
                         <h5 className="grey-text">{restaurant.name}</h5>
                         </strong>
                         </MDBCardTitle>
- 
-              <MDBCardFooter className="px-1">
-                <span className="float-left">
-                <MDBIcon fab icon="facebook grey-text ml-3"/> 
-                </span>
-                <span className="center">
-                <MDBIcon icon="fa-share-alt grey-text ml-3"/> 
-                </span>
-                <span className="float-right">
-                <MDBIcon far icon="heart grey-text ml-3"/> 
-                </span>
-              </MDBCardFooter>
+                          <MDBCardFooter className="modal-footer">
+                            <MDBIcon fab icon="facebook grey-text ml-3" />
+                            <MDBIcon icon="share-alt grey-text ml-3" />
+                            <MDBIcon far icon="heart grey-text ml-3" />
+                          </MDBCardFooter>
                       </MDBCardBody>
                     </MDBCard>
                   </MDBCol>
