@@ -10,7 +10,7 @@ import { menuCarouselOptions } from '../../utils/constants';
 import { getUserProp } from '../../services/auth-service';
 import { getRestaurantDetails, placeOrder, deleteRestaurant } from '../../services/restaurant-service';
 
-const RestaurantDetails = (props) => {
+const RestaurantDetails = ({ match, history }) => {
   const [isOrderInProgress, setIsOrderInProgress] = useState(false);
   const [isOrderCompleted, setIsOrderCompleted] = useState(false);
   const [restaurant, setRestaurant] = useState(null);
@@ -23,12 +23,14 @@ const RestaurantDetails = (props) => {
     if (isOwner) {
       // TODO: Implement confirmation modal
       // TODO: Redirect
-      deleteRestaurant(restaurant._id);
+      deleteRestaurant(restaurant._id).then(() => {
+        history.push('/restaurant');
+      });
     }
   };
 
   useEffect(() => {
-    const { name } = props.match.params;
+    const { name } = match.params;
 
     if (name) {
       const getRestaurantByName = async (restaurantName) => {
@@ -49,7 +51,7 @@ const RestaurantDetails = (props) => {
 
       getRestaurantByName(name);
     }
-  }, [props.match.params]);
+  }, [match.params]);
 
 
   return (

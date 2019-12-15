@@ -49,7 +49,7 @@ export const createNewRestaurant = (name, type, logoUrl) => {
 export const deleteRestaurant = (restaurantId) => {
   const endpoint = `${config.apiBaseUrl}/restaurant/${restaurantId}`;
   
-  del(endpoint);
+  return del(endpoint);
 };
 
 export const placeOrder = (restaurantId, order) => {
