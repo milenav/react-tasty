@@ -8,7 +8,7 @@ import Slider from "react-slick";
 
 import { menuCarouselOptions } from '../../utils/constants';
 import { getUserProp } from '../../services/auth-service';
-import { getRestaurantDetails, placeOrder } from '../../services/restaurant-service';
+import { getRestaurantDetails, placeOrder, deleteRestaurant } from '../../services/restaurant-service';
 
 const RestaurantDetails = (props) => {
   const [isOrderInProgress, setIsOrderInProgress] = useState(false);
@@ -19,9 +19,11 @@ const RestaurantDetails = (props) => {
   const [isOwner, setIsOwner] = useState(false);
   const total = orderItems.reduce((sum, i) => i.price + sum, 0);
 
-  const deleteRestaurant = () => {
+  const closeRestaurant = async () => {
     if (isOwner) {
-      console.log('DELETE!');
+      // TODO: Implement confirmation modal
+      // TODO: Redirect
+      deleteRestaurant(restaurant._id);
     }
   };
 
@@ -64,7 +66,7 @@ const RestaurantDetails = (props) => {
                 {
                   isOwner ? (
                     <MDBCardFooter>
-                      <MDBBtn onClick={deleteRestaurant}>Delete restaurant</MDBBtn>
+                      <MDBBtn onClick={closeRestaurant}>Delete restaurant</MDBBtn>
                     </MDBCardFooter>
                   ) : (null)
                 }
