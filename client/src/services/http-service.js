@@ -25,7 +25,7 @@ export const post = (endpoint, data, options = {}) => {
  * @param {Any} data 
  */
 export const put = (endpoint, data, options = {}) => {
-    __doRequest('PUT', endpoint, data, options);
+    return __doRequest('PUT', endpoint, data, options);
 };
 
 /**
@@ -33,7 +33,7 @@ export const put = (endpoint, data, options = {}) => {
  * @param {String} endpoint 
  */
 export const del = (endpoint) => {
-    __doRequest('DELETE', endpoint);
+    return __doRequest('DELETE', endpoint);
 };
 
 // TODO: Implement error handling for this generic method
