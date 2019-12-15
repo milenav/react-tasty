@@ -1,5 +1,5 @@
 import config from '../utils/config';
-import { get } from './http-service';
+import { get, post } from './http-service';
 
 /**
  * Get collection of restaurants
@@ -31,6 +31,19 @@ export const getRestaurantDetails = (restaurantName) => {
   } catch (ex) {
     console.log(ex);
   }
+};
+
+/**
+ * Creates a new one restaurant
+ * @param {String} name The name of the restaurant
+ * @param {String} type The type of the restaurant
+ */
+export const createNewRestaurant = (name, type) => {
+  const endpoint = `${config.apiBaseUrl}/restaurant`;
+  const data = { name, type };
+  const response = post(endpoint, data);
+
+  return response;
 };
 
 export const placeOrder = (restaurantId, order) => {
