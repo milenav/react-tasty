@@ -18,6 +18,16 @@ const __getStorage = (key) => {
 }
 
 /**
+ * Get localStorage user data by given property key
+ * @param {String} key The property name
+ */
+export const getUserProp = (key) => {
+    const storage = __getStorage(storageKey);
+
+    return storage[key];
+}
+
+/**
  * Updates a given property in localStorage user data
  * @name updateUserProp
  * @param {String} key storage property to update
