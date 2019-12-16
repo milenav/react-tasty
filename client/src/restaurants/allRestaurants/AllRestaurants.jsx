@@ -117,12 +117,12 @@ const AllRestaurants = () => {
                           top
                           alt="Logo" 
                           overlay="white-slight"
-                          className="img-fluid"
+                          className="img-fluid mt-3"
                           />
                         </MDBNavLink>
-                        <MDBCardTitle>
-                          <strong>
-                        <h5 className="grey-text">{restaurant.name}</h5>
+                        <MDBCardTitle className="mt-4 mb-3">
+                        <strong>
+                          <h5 className="grey-text">{restaurant.name}</h5>
                         </strong>
                         </MDBCardTitle>
                           <MDBCardFooter className="modal-footer d-flex justify-content-between">
