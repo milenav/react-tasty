@@ -75,8 +75,8 @@ const RestaurantDetails = ({ match, history }) => {
               </MDBCard>
 
               {/* Slider */}
-              <MDBContainer className="md-8 mx-5">
-                <MDBRow>
+              <MDBContainer className="md-8 mx-5 my-3">
+                <MDBRow className="grey lighten-5 py-2">
                   <MDBCol>
                     <Slider {...menuCarouselOptions}>
                       <div onClick={() => setMenuItems(restaurant.menu)}>All</div>
