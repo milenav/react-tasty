@@ -108,25 +108,27 @@ const AllRestaurants = () => {
                 return (
                   <MDBCol lg="4" className="card-deck mb-5 mr-2" key={restaurant.name} >
                     <MDBCard cascade narrow ecommerce>
+
+                        <MDBCardBody cascade className="text-center">
                         <MDBNavLink to={`/restaurant/${restaurant.name}`}>
-                          <MDBCardImage 
+                          <MDBCardImage
                           cascade
                           src={restaurant.logoUrl} 
                           top
                           alt="Logo" 
                           overlay="white-slight"
+                          className="img-fluid"
                           />
                         </MDBNavLink>
-                        <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>
                           <strong>
                         <h5 className="grey-text">{restaurant.name}</h5>
                         </strong>
                         </MDBCardTitle>
-                          <MDBCardFooter className="modal-footer">
-                            <MDBIcon fab icon="facebook grey-text ml-3" />
-                            <MDBIcon icon="share-alt grey-text ml-3" />
-                            <MDBIcon far icon="heart grey-text ml-3" />
+                          <MDBCardFooter className="modal-footer d-flex justify-content-between">
+                            <MDBIcon fab icon="facebook grey-text" />
+                            <MDBIcon icon="share-alt grey-text" />
+                            <MDBIcon far icon="heart grey-text" />
                           </MDBCardFooter>
                       </MDBCardBody>
                     </MDBCard>

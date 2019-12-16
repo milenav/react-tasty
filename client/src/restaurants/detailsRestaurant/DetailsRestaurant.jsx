@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBCard, MDBCardUp, MDBAvatar, MDBCardBody, MDBCardFooter } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBCard, MDBCardBody, MDBCardFooter } from 'mdbreact';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -60,8 +60,8 @@ const RestaurantDetails = ({ match, history }) => {
         <MDBContainer fluid className="ml-5">
           <MDBRow>
             <MDBCol className="md-8">
-              <MDBCard className="face front img-fluid">
-                <MDBCardBody className="mx-auto">
+              <MDBCard className="img-fluid">
+                <MDBCardBody className="mx-auto hover zoom">
                   <img className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
                 </MDBCardBody>
 
