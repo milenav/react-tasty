@@ -9,7 +9,6 @@ import { AppProvider, appContextInitialState } from './AppContext';
 
 import AppRoutes from './AppRoutes';
 import Navigation from '../navigation/Navigation';
-import Footer from '../footer/Footer';
 
 import { hasTokenSet } from '../services/auth-service';
 
@@ -22,7 +21,6 @@ function App() {
       <AppProvider value={initialState}>
           <Navigation />
           <AppRoutes />
-          <Footer />
       </AppProvider>
     </div>
   );

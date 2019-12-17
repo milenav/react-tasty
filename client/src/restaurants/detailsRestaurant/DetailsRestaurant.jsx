@@ -64,17 +64,9 @@ const RestaurantDetails = ({ match, history }) => {
                 <MDBCardBody className="mx-auto hover zoom">
                   <img className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
                 </MDBCardBody>
+                </MDBCard>
 
-                {
-                  isOwner ? (
-                    <MDBCardFooter>
-                      <MDBBtn onClick={closeRestaurant}>Delete restaurant</MDBBtn>
-                    </MDBCardFooter>
-                  ) : (null)
-                }
-              </MDBCard>
-
-              {/* Slider */}
+                {/* Slider */}
               <MDBContainer className="md-8 mx-5 my-3">
                 <MDBRow className="grey lighten-5 py-2">
                   <MDBCol>
@@ -99,19 +91,28 @@ const RestaurantDetails = ({ match, history }) => {
                 </MDBRow>
               </MDBContainer>
 
+                {
+                  isOwner ? (
+                    
+                      <MDBBtn className="white-text" color="default" onClick={closeRestaurant}>Delete restaurant</MDBBtn>
+                    
+                  ) : (null)
+                }
+      
+
               {/* MENU */}
               {
                 menuItems.map((item, index) => {
                   return (
                     <MDBRow key={index} onClick={() => setOrderItems([...orderItems, item])}>
                       <MDBCol className="md-8">
-                        <MDBCard className="px-5 mb-3 py-3">
-                          <MDBCardBody className="d-flex justify-content-between flex-wrap">
-                            <MDBIcon orange-text icon="utensils" className="d-flex justify-content-start flex-wrap orange-text" />
+                        <MDBCard className="px-5 mb-3 py-1">
+                          <MDBCardBody className="d-flex justify-content-between flex-wrap pointer">
+                            <MDBIcon orange-text icon="utensils" className="orange-text" />
                             <strong>
                               {item.name} - {item.price} EUR
                           </strong>
-                            <MDBIcon orange-text icon="check" className="d-flex justify-content-end flex-wrap orange-text" />
+                            <MDBIcon orange-text icon="check" className="orange-text" />
                           </MDBCardBody>
                         </MDBCard>
                       </MDBCol>
