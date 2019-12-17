@@ -105,8 +105,14 @@ const RestaurantDetails = ({ match, history }) => {
                   return (
                     <MDBRow key={index} onClick={() => setOrderItems([...orderItems, item])}>
                       <MDBCol className="md-8">
-                        <MDBCard>
-                          {item.name} - {item.price} EUR
+                        <MDBCard className="px-5 mb-3 py-3">
+                          <MDBCardBody className="d-flex justify-content-between flex-wrap">
+                            <MDBIcon orange-text icon="utensils" className="d-flex justify-content-start flex-wrap orange-text" />
+                            <strong>
+                              {item.name} - {item.price} EUR
+                          </strong>
+                            <MDBIcon orange-text icon="check" className="d-flex justify-content-end flex-wrap orange-text" />
+                          </MDBCardBody>
                         </MDBCard>
                       </MDBCol>
                     </MDBRow>
