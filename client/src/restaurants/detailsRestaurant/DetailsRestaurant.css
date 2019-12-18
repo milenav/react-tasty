@@ -1,7 +1,5 @@
-img .rounded-circle {
-    position: absolute;
-    top: 56%;
-    left: 25px;
-    z-index: 1;
-  }
- 
+.justify-content-between,
+.card-img-top,
+span {
+    cursor: pointer;
+}

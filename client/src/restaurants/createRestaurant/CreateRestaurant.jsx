@@ -52,6 +52,7 @@ const CreateRestaurant = (props) => {
               id="RestaurantName"
               className="form-control"
               onChange={fillOutRestaurantData}
+              required
             />
             
             <label htmlFor="restaurant-type" className="grey-text mt-4">
@@ -64,6 +65,7 @@ const CreateRestaurant = (props) => {
               value={type || ''}
               className="form-control"
               onChange={fillOutRestaurantData}
+              required
             />
 
             <label htmlFor="LogoUrl" className="grey-text mt-4">

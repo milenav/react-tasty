@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+import './DetailsRestaurant.css';
 import { menuCarouselOptions } from '../../utils/constants';
 import { getUserProp } from '../../services/auth-service';
 import { getRestaurantDetails, placeOrder, deleteRestaurant } from '../../services/restaurant-service';

@@ -104,7 +104,7 @@ const AllRestaurants = () => {
         <MDBCol lg="9" md="9">
           <MDBRow>
             {
-              restaurantsList.map((restaurant) => {
+              restaurantsList.length && restaurantsList.map((restaurant) => {
                 return (
                   <MDBCol lg="4" className="card-deck mb-5 mr-2" key={restaurant.name} >
                     <MDBCard cascade narrow ecommerce>
