@@ -78,6 +78,7 @@ const CreateRestaurant = (props) => {
               value={logoUrl || ''}
               className="form-control"
               onChange={fillOutRestaurantData}
+              required
             />
             
             <label htmlFor="min-order" className="grey-text mt-4">

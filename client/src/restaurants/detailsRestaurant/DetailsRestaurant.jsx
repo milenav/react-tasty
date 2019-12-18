@@ -95,7 +95,7 @@ const RestaurantDetails = ({ match, history }) => {
                 {
                   isOwner ? (
                     
-                      <MDBBtn className="white-text" color="default" onClick={closeRestaurant}>Delete restaurant</MDBBtn>
+                      <MDBBtn  className="white-text d-flex justify-content-center" color="default" onClick={closeRestaurant}>Delete restaurant</MDBBtn>
                     
                   ) : (null)
                 }
@@ -108,7 +108,7 @@ const RestaurantDetails = ({ match, history }) => {
                     <MDBRow key={index} onClick={() => setOrderItems([...orderItems, item])}>
                       <MDBCol className="md-8">
                         <MDBCard className="px-5 mb-3 py-1">
-                          <MDBCardBody className="d-flex justify-content-between flex-wrap pointer">
+                          <MDBCardBody className="d-flex justify-content-between flex-wrap">
                             <MDBIcon orange-text icon="utensils" className="orange-text" />
                             <strong>
                               {item.name} - {item.price} EUR
@@ -246,7 +246,7 @@ const RestaurantDetails = ({ match, history }) => {
             </MDBModalBody>
 
             <MDBModalFooter>
-              <MDBBtn color="secondary" onClick={() => {
+              <MDBBtn className="white-text mx-auto" color="default" onClick={() => {
                 setIsOrderCompleted(false);
                 setOrderItems([]);
               }}>Close</MDBBtn>
