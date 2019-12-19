@@ -21,8 +21,8 @@ const Login = (props) => {
 
   return (
     <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
+      <MDBRow className="mt-4">
+        <MDBCol md="6 mx-auto">
           <form onSubmit={handleSubmit}>
             <p className="h4 text-center my-4">Login</p>
             <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
@@ -34,6 +34,7 @@ const Login = (props) => {
               className="form-control"
               onChange={e => setEmail(e.target.value)}
               value={email}
+              required
             />
 
             <label htmlFor="defaultFormLoginPasswordEx" className="grey-text mt-4">
@@ -45,6 +46,7 @@ const Login = (props) => {
               className="form-control"
               onChange={e => setPassword(e.target.value)}
               value={password}
+              required
             />
             <div className="text-center mt-4">
               <MDBBtn className="white-text" color="default" type="submit">Login</MDBBtn>

@@ -28,8 +28,8 @@ const Register = (props) => {
 
   return (
     <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
+      <MDBRow className="mt-4">
+        <MDBCol md="6 mx-auto">
           <form onSubmit={handleSubmit}>
             <p className="h4 text-center my-4">Register</p>
             <label htmlFor="defaultFormRegisterEmail" className="grey-text">
@@ -41,6 +41,7 @@ const Register = (props) => {
               className="form-control"
               onChange={e => setEmail(e.target.value)}
               value={email}
+              required
             />
             
             <label htmlFor="defaultFormRegisterPassword" className="grey-text mt-4">
@@ -52,6 +53,7 @@ const Register = (props) => {
               className="form-control"
               onChange={e => setPassword(e.target.value)}
               value={password}
+              required
             />
              
             <div className="text-center mt-4">

@@ -37,8 +37,8 @@ const CreateRestaurant = (props) => {
 
   return (
     <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
+      <MDBRow className="mt-4">
+        <MDBCol md="6 mx-auto">
           <form onSubmit={handleSubmitNewRestaurant}>
             <p className="h4 text-center my-4">Create New Restaurant</p>
 
