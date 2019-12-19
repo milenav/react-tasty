@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBCard, MDBCardBody, MDBCardFooter } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBCard, MDBCardBody } from 'mdbreact';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -60,7 +60,7 @@ const RestaurantDetails = ({ match, history }) => {
       <div>
         <MDBContainer fluid className="ml-5">
           <MDBRow>
-            <MDBCol className="md-8">
+            <MDBCol className="md-8 text-center">
               <MDBCard className="img-fluid">
                 <MDBCardBody className="mx-auto hover zoom">
                   <img className="card-img-top" src={restaurant.logoUrl} alt="menu background" />
@@ -68,10 +68,10 @@ const RestaurantDetails = ({ match, history }) => {
                 </MDBCard>
 
                 {/* Slider */}
-              <MDBContainer className="md-8 mx-5 my-3">
-                <MDBRow className="grey lighten-5 py-2">
+              <MDBContainer className="md-8 mx-5 my-3 mx-auto">
+                <MDBRow>
                   <MDBCol>
-                    <Slider {...menuCarouselOptions}>
+                    <Slider className="grey lighten-5 py-2" {...menuCarouselOptions}>
                       <div onClick={() => setMenuItems(restaurant.menu)}>All</div>
                       {
                         restaurant.categories && restaurant.categories.map((category) => {
@@ -88,17 +88,18 @@ const RestaurantDetails = ({ match, history }) => {
                         })
                       }
                     </Slider>
+                    {
+                  isOwner ? (
+                    
+                      <MDBBtn className="white-text mt-4" color="default" onClick={closeRestaurant}>Delete restaurant</MDBBtn>
+                    
+                      ) : (null)
+                    }
                   </MDBCol>
                 </MDBRow>
               </MDBContainer>
 
-                {
-                  isOwner ? (
-                    
-                      <MDBBtn  className="white-text d-flex justify-content-center" color="default" onClick={closeRestaurant}>Delete restaurant</MDBBtn>
-                    
-                  ) : (null)
-                }
+
       
 
               {/* MENU */}
@@ -109,11 +110,11 @@ const RestaurantDetails = ({ match, history }) => {
                       <MDBCol className="md-8">
                         <MDBCard className="px-5 mb-3 py-1">
                           <MDBCardBody className="d-flex justify-content-between flex-wrap">
-                            <MDBIcon orange-text icon="utensils" className="orange-text" />
+                            <MDBIcon icon="utensils" className="orange-text" />
                             <strong>
                               {item.name} - {item.price} EUR
                           </strong>
-                            <MDBIcon orange-text icon="check" className="orange-text" />
+                            <MDBIcon icon="check" className="orange-text" />
                           </MDBCardBody>
                         </MDBCard>
                       </MDBCol>
@@ -249,6 +250,7 @@ const RestaurantDetails = ({ match, history }) => {
               <MDBBtn className="white-text mx-auto" color="default" onClick={() => {
                 setIsOrderCompleted(false);
                 setOrderItems([]);
+                history.push('/restaurant');
               }}>Close</MDBBtn>
             </MDBModalFooter>
           </MDBModal>
