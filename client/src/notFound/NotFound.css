@@ -3,10 +3,14 @@
   height: 100vh;
 }
 
+span {
+  position: relative;
+}
+
 .notfound .not-found {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 30%;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -49,7 +53,7 @@
   font-weight: 300;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 420px) {
   .not-found .notfound-404 {
     height: 115px;
   }

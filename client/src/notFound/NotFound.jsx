@@ -5,11 +5,9 @@ import './NotFound.css'
 
 const NotFound = () => {
   return (
-
-
     <MDBContainer>
       <MDBRow>
-        <MDBCol md="6">
+        <MDBCol md="6 mx-auto">
         <div className="notfound">
 		<div className="not-found">
 			<div className="notfound-404">
