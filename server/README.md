@@ -1,2 +1,2 @@
-# yumradar-api
-The api for yum radar client project
+# tasty-api
+The api for tasty client project
