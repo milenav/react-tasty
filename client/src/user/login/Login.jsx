@@ -12,7 +12,7 @@ const Login = (props) => {
     e.preventDefault()
 
     if (!email || !password) {
-      setError("Please provide your credentials!");
+      setError(error);
     } else {
       setError(null);
       appContext.loginUser(email, password);

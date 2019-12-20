@@ -14,7 +14,7 @@ const Register = (props) => {
     const credentialsAreNotSet = !email || !password;
 
     if(credentialsAreNotSet) {
-      setError("Please provide your credentials!")
+      setError(error)
     } else {
       const registerResponse = await register(email, password);
 

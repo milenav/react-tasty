@@ -23,7 +23,6 @@ const RestaurantDetails = ({ match, history }) => {
   const closeRestaurant = async () => {
     if (isOwner) {
       // TODO: Implement confirmation modal
-      // TODO: Redirect
       deleteRestaurant(restaurant._id).then(() => {
         history.push('/restaurant');
       });
@@ -58,7 +57,7 @@ const RestaurantDetails = ({ match, history }) => {
   return (
     restaurant ? (
       <div>
-        <MDBContainer fluid className="ml-5">
+        <MDBContainer fluid>
           <MDBRow>
             <MDBCol className="md-8 text-center">
               <MDBCard className="img-fluid">
@@ -108,9 +107,9 @@ const RestaurantDetails = ({ match, history }) => {
                   return (
                     <MDBRow key={index} onClick={() => setOrderItems([...orderItems, item])}>
                       <MDBCol className="md-8">
-                        <MDBCard className="px-5 mb-3 py-1">
+                        <MDBCard className="px-3 mb-3 py-1">
                           <MDBCardBody className="d-flex justify-content-between flex-wrap">
-                            <MDBIcon icon="utensils" className="orange-text" />
+                            <img style={{maxWidth: '2rem'}} className="img-fluid rounded-circle z-depth-1" src="https://image.flaticon.com/icons/png/128/45/45332.png" alt="icon-food"/>
                             <strong>
                               {item.name} - {item.price} EUR
                           </strong>
@@ -124,6 +123,8 @@ const RestaurantDetails = ({ match, history }) => {
               }
             </MDBCol>
 
+
+              {/* Card */}
             <MDBCol className="md-4 mx-5 mt-5">
               <MDBContainer fluid={true}>
                 <h2>{restaurant.name}</h2>
@@ -208,7 +209,7 @@ const RestaurantDetails = ({ match, history }) => {
 
                   <MDBCol size="12">
                     <MDBBtn
-                      className="white-text"
+                      className="white-text mb-5"
                       block
                       disabled={total < restaurant.minOrder || isOrderInProgress}
                       onClick={() => {
